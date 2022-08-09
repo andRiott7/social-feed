@@ -1,0 +1,67 @@
+.sidebar {
+  background: var(--gray-800);
+  color: var(--gray-300);
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+.cover {
+  width: 100%;
+  height: 4.5rem;
+  object-fit: cover;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  margin-top: -2.25rem;
+}
+
+.avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 8px;
+  border : 4px solid var(--gray-800);
+  outline: 2px solid var(--green-500);
+}
+
+.name {
+  margin-top: 1rem;
+  color: var(--gray-100);
+  line-height: 1.5em;
+
+}
+.role {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  line-height: 1.5em;
+
+}
+.sidebar footer {
+  border-top: 1px solid var(--gray-600);
+  padding: 1.5rem 2rem 2rem;
+  margin-top: 1.5rem;
+}
+
+.sidebar footer a {
+  width: 100%;
+  background: transparent;
+  color: var(--green-500);
+  border: 1px solid var(--green-500);
+  border-radius:  0.5rem;
+  height: 50px; 
+  padding: 0 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.6rem;
+  transition: all 0.35s;
+}
+
+.sidebar footer a:hover {
+  background: var(--green-500);
+  color: var(--gray-500);
+}

@@ -1,0 +1,35 @@
+:root { 
+  --white: #ffffff;
+  --gray-100: #e1e1e6;
+  --gray-300: #c4c4cc;
+  --gray-400: #8d8d99;
+  --gray-600: #323238;
+  --gray-700: #29292e;
+  --gray-800: #202024;
+  --gray-900: #121214;
+  --green-400: #00B37E;
+  --green-500: #00875f;
+}
+/*RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*GLOBAL STYLES*/
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--gray-900);
+  color: var(--gray-300);
+}
+
+body, input, textarea, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
