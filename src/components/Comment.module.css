@@ -1,9 +1,9 @@
 .comment {
-  margin-top: 1.5rem;
+  margin-top: 4.5rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
+  gap: 1rem; 
 }
-
 
 .commentBox {
   flex: 1;

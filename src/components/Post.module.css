@@ -11,7 +11,7 @@
 
 .post > header  {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -38,7 +38,6 @@
 .author {
   display: flex;
   align-items: center;
-  width: 100%;
   gap: 1rem;
 }
 
