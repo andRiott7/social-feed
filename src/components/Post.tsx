@@ -12,8 +12,6 @@ export function Post(props: any) {
 
   const [newCommentText, setNewCommentText] = useState('')
 
-  // const newCommentText = event!.target.props.comment.value
-
   function handleCreateNewComment() {
     event!.preventDefault()
 
@@ -22,6 +20,7 @@ export function Post(props: any) {
   }
 
   function handleNewCommentChange() {
+    event!.target.setCustomValidity('');
     setNewCommentText(event!.target.value);
   }
 
@@ -32,6 +31,11 @@ export function Post(props: any) {
     setComments(commentsWithoutDeletedOne)
   }
 
+  function handleNewCommentInvalid() {
+    event!.target.setCustomValidity('This field is required');
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
   // const publishedDateFormatted = new Intl.DateTimeFormat('en-US', {
   //   day: '2-digit',
   //   month: 'long',
@@ -73,8 +77,10 @@ export function Post(props: any) {
           placeholder="Leave a mesage"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         ></textarea>
-        <button type="submit"> Comment </button>
+        <button type="submit" disabled={isNewCommentEmpty} > Comment </button>
       </form>
 
       <div className={styles.commentList}>

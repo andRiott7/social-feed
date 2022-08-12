@@ -15,7 +15,7 @@ const posts = [
     },
     content: [
       { type: 'paragraph', content: 'Good morning fellas' },
-      { type: 'paragraph', content: 'There is one more time to do the same, again.' },
+      { type: 'paragraph', content: 'There is one more time to do the same project, again.' },
       { type: 'paragraph', content: 'Lets get it!' },
       { type: 'link', content: 'andriott.com' },
     ],
