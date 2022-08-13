@@ -1,37 +1,55 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent, InvalidEvent } from 'react'
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 import { format, formatDistanceToNow } from 'date-fns';
 import enUS from 'date-fns/locale/en-US';
 import styles from './Post.module.css';
 
-export function Post(props: any) {
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string
+}
+interface PostProps {
+  author: Author;
+  publishedAt: Date;
+  content: Content[]
+}
+
+export function Post(
+  // props: any 
+  { author, publishedAt, content }: PostProps
+) {
   const [comments, setComments] = useState([
     'Awesome post buddy, congrats!!',
   ])
 
   const [newCommentText, setNewCommentText] = useState('')
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event!.preventDefault()
-
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event!.target.setCustomValidity('');
     setNewCommentText(event!.target.value);
   }
 
-  function deleteComment(commentToDelete: any) {
+  function deleteComment(commentToDelete: string) {
     const commentsWithoutDeletedOne = comments.filter(comment => {
       return comment !== commentToDelete;
     })
     setComments(commentsWithoutDeletedOne)
   }
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event!.target.setCustomValidity('This field is required');
   }
 
@@ -43,25 +61,25 @@ export function Post(props: any) {
   //   minute: '2-digit'
   // }).format(props.publishedAt);
 
-  const publishDateFormatted = format(props.publishedAt, "MM dd 'at' HH:mm'h'", { locale: enUS })
-  const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, { locale: enUS, addSuffix: true })
+  const publishDateFormatted = format(publishedAt, "MM dd 'at' HH:mm'h'", { locale: enUS })
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, { locale: enUS, addSuffix: true })
 
   return (
     <article className={styles.post}>
 
       <header>
         <div className={styles.author}>
-          <Avatar hasBorder={true} src={props.author.avatarUrl} />
+          <Avatar hasBorder={true} src={author.avatarUrl} alt="" />
           <div className={styles.authorInfo}>
-            <strong>{props.author.name}</strong>
-            <p>{props.author.role} </p>
+            <strong>{author.name}</strong>
+            <p>{author.role} </p>
           </div>
         </div>
-        <time title={publishDateFormatted} dateTime={props.publishedAt.toISOString()} > {publishedDateRelativeToNow} </time>
+        <time title={publishDateFormatted} dateTime={publishedAt.toISOString()} > {publishedDateRelativeToNow} </time>
       </header>
 
       <div className={styles.content} >
-        {props.content.map((line: any) => {
+        {content.map((line: any) => {
           if (line.type === 'paragraph') {
             return (<p key={line.content} > {line.content} </p>)
           } else if (line.type === 'link') {
